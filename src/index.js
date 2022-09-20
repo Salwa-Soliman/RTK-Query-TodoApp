@@ -9,11 +9,11 @@ import { todosApi } from "./store/services/todosApi";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <ApiProvider api={todosApi}>
-      <App />
-    </ApiProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <ApiProvider api={todosApi}>
+    <App />
+  </ApiProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

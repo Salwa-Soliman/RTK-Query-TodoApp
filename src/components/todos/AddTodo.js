@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Button from "./../ui/Button";
-import Todo from "../../models/todo";
+// import Todo from "../../models/todo";
 
 import { useAddTodoMutation } from "../../store/services/todosApi";
 
@@ -10,12 +10,16 @@ const AddTodo = () => {
 
   const submitFormHandler = (event) => {
     event.preventDefault();
+
     const inputValue = todoInputRef.current.value.trim();
 
     if (inputValue) {
-      const newTodo = new Todo(inputValue);
-      console.log(newTodo);
-      addTodo(new Todo(newTodo));
+      addTodo({
+        id: new Date().getTime().toString(),
+        title: inputValue,
+        completed: false,
+      });
+
       todoInputRef.current.value = "";
     }
   };
