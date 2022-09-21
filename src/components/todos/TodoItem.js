@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import useToast from "./../../hooks/useToast";
 import {
   useUpdateTodoMutation,
   useDeleteTodoMutation,
 } from "../../store/services/todosApi";
+
 import Button from "./../ui/Button";
 
 const TodoItem = ({ todo }) => {
   const [isCompleted, setIsCompleted] = useState(todo.completed);
-  const [updateTodo] = useUpdateTodoMutation();
-  const [deleteTodo] = useDeleteTodoMutation();
+
+  const [updateTodo, updateReq] = useUpdateTodoMutation();
+  const { updateState: setUpdateReqState } = useToast({
+    ...updateReq,
+    loadingMsg: "Updating Todo ...",
+    successMsg: "Updated Successfully!",
+  });
+
+  const [deleteTodo, deleteReq] = useDeleteTodoMutation();
+  const { updateState: setDeleteReqState } = useToast({
+    ...deleteReq,
+    loadingMsg: "Deleting Todo ...",
+    successMsg: "Deleted Successfully!",
+  });
+
+  useEffect(() => {
+    setUpdateReqState({ ...updateReq });
+  }, [updateReq, setUpdateReqState]);
+
+  useEffect(() => {
+    setDeleteReqState({ ...deleteReq });
+  }, [deleteReq, setDeleteReqState]);
 
   const toggleTodoHandler = () => {
     updateTodo({ ...todo, completed: !isCompleted });

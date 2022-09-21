@@ -28,6 +28,26 @@ header {
   justify-content: center;
 }
 
+.todo-form input {
+  padding: 10px;
+  font-size: 16px;
+  background-color: var(--white100);
+  outline: 0;
+  transition: 0.8s ease-in-out;
+  -webkit-transition: 0.8s ease-in-out;
+  -moz-transition: 0.8s ease-in-out;
+  -ms-transition: 0.8s ease-in-out;
+  -o-transition: 0.8s ease-in-out;
+  border-color: transparent transparent #fff7;
+  color: var(--secondary-color);
+}
+
+.todo-form input:focus {
+  border-bottom-color: var(--secondary-color);
+  color: #fff;
+  background-color: #fff3;
+}
+
 .todo-list {
   list-style: none;
   padding: 20px;
@@ -78,7 +98,6 @@ header {
 .todo-item {
   margin-bottom: 10px;
 }
-
 .todo-item label {
   cursor: pointer;
   margin-left: 5px;
@@ -92,6 +111,7 @@ header {
 .todo-item label:hover {
   color: var(--secondary-color);
 }
+
 /* .btn:hover::before {
   content: " ";
   position: relative;
