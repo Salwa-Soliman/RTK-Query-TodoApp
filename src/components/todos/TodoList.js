@@ -1,17 +1,12 @@
 import React from "react";
-import { useGetTodosQuery } from "../../store/services/todosApi";
-import TodoItem from "./TodoItem";
+import TodoItem from "../todos/TodoItem";
 
-const TodoList = () => {
-  const { data: todos, isError, isLoading } = useGetTodosQuery();
-
-  if (isLoading) return <h1>Loading ...</h1>;
-  if (isError) return <h1>Error Fetching Data ...</h1>;
-
+const TodoList = ({ title, listItems }) => {
   return (
     <ul className="todo-list">
-      {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
+      <h3 className="list-title">{title}</h3>
+      {listItems.map((item) => (
+        <TodoItem key={item.id} todo={item} />
       ))}
     </ul>
   );

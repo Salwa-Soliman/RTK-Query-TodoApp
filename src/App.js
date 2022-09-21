@@ -1,7 +1,7 @@
 import "./App.css";
 import AddTodo from "./components/todos/AddTodo";
 import Header from "./components/ui/Header";
-import TodoList from "./components/todos/TodoList";
+import Todos from "./components/todos/Todos";
 import Toast from "./components/ui/Toast";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Header />
       <AddTodo />
-      <TodoList />
+      <Todos />
       <Toast />
     </div>
   );

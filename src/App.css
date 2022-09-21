@@ -6,13 +6,26 @@
   --secondary-shadow: 0 0 15px 3px #61dafb50;
   --red-shadow: 0 0 15px 3px #f005;
 }
+/* General  */
 
+.center {
+  text-align: center;
+}
+
+ul{
+  list-style:none;
+}
+
+h3{
+  margin: 30px auto;
+}
+/* App  */
 .App {
   min-height: 100vh;
   background-color: var(--main-color);
   color: #fff;
 }
-
+/* Header  */
 header {
   background-color: var(--white100);
   font-size: 2rem;
@@ -22,7 +35,7 @@ header {
   margin-bottom: 20px;
   box-shadow: var(--white-shadow);
 }
-
+/* Add Todo  */
 .todo-form {
   display: flex;
   justify-content: center;
@@ -47,12 +60,22 @@ header {
   color: #fff;
   background-color: #fff3;
 }
-
-.todo-list {
-  list-style: none;
-  padding: 20px;
+/* Todo List  */
+.todos {
+  display: flex;
+  justify-content: space-evenly;
 }
 
+/* List  */
+.todo-list {
+  list-style: none;
+}
+
+.todo-list .list-title{
+  /* text-align:center; */
+  margin:20px auto;
+}
+/* Button  */
 .btn {
   border-color: transparent;
   border-width: 1px;
@@ -94,7 +117,7 @@ header {
   border-color: #f00;
   box-shadow: var(--red-shadow);
 }
-
+/* Todo Item  */
 .todo-item {
   margin-bottom: 10px;
 }
@@ -112,28 +135,49 @@ header {
   color: var(--secondary-color);
 }
 
-/* .btn:hover::before {
-  content: " ";
-  position: relative;
-  left: 0;
-  margin-right: 5px;
-  animation: btn 0.4s forwards;
-  -webkit-animation: btn 0.4s forwards;
-  opacity: 0;
+/* Spinner  */
+.spinner {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-@keyframes btn {
+.spinner:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 6px solid teal;
+  border-color: teal transparent teal transparent;
+  -webkit-animation: spinner 1.2s linear infinite;
+  animation: spinner 1.2s linear infinite;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+@keyframes spinner {
   0% {
-    content: "+";
-    opacity: 0;
-  }
-  60% {
-    content: "+";
-
-    opacity: 0.4;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    content: "+";
-
-    opacity: 1;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-} */
+}
