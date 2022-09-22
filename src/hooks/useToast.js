@@ -54,12 +54,13 @@ const useToast = (props) => {
   }
 
   if (state.isError) {
-    configToast({
-      updateToast: true,
-      type: toast.TYPE.ERROR,
-      time: false,
-      message: "Something went wrong!",
-    });
+    throw Error("Something went wrong!");
+    // configToast({
+    //   updateToast: true,
+    //   type: toast.TYPE.ERROR,
+    //   time: false,
+    //   message: "Something went wrong!",
+    // });
   }
 
   if (state.isSuccess) {

@@ -9,6 +9,7 @@ export const todosApi = createApi({
     getTodos: builder.query({
       query: () => `todos/`,
       providesTags: ["Todos"],
+      invalidatesTags: ["Todos"],
     }),
     addTodo: builder.mutation({
       query: (todo) => ({
@@ -24,6 +25,7 @@ export const todosApi = createApi({
         method: "PATCH",
         body: todo,
       }),
+      invalidatesTags: ["Todos"],
     }),
     deleteTodo: builder.mutation({
       query: ({ id }) => ({

@@ -2,13 +2,25 @@ import React from "react";
 import TodoItem from "../todos/TodoItem";
 
 const TodoList = ({ title, listItems }) => {
+  let content;
+
+  if (listItems.length === 0) {
+    content = <p className="center">Nothing to show ..</p>;
+  } else {
+    content = (
+      <ul className="todo-list">
+        {listItems.map((item) => (
+          <TodoItem key={item.id} todo={item} />
+        ))}
+      </ul>
+    );
+  }
+
   return (
-    <ul className="todo-list">
-      <h3 className="list-title">{title}</h3>
-      {listItems.map((item) => (
-        <TodoItem key={item.id} todo={item} />
-      ))}
-    </ul>
+    <div className="todo-list-container">
+      <h2 className="list-title">{title} </h2>
+      {content}
+    </div>
   );
 };
 

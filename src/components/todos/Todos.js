@@ -1,27 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useGetTodosQuery } from "../../store/services/todosApi";
 import TodoList from "./TodoList";
 import Spinner from "../ui/Spinner";
-import TodoItem from "./TodoItem";
 
 const Todos = () => {
-  const { data: todos, isError, isLoading } = useGetTodosQuery();
-  const lists = { completed: [], todo: [] };
+  const { data: todos, isLoading, isSuccess } = useGetTodosQuery();
+  // const lists = { completed: [], todo: [] };
+  const [lists, setLists] = useState({ completed: [], todo: [] });
 
+  useEffect(() => {
+    if (!isLoading && isSuccess && todos.length) {
+      const completedTodos = [],
+        pendingTodos = [];
+      todos.forEach((todo) =>
+        todo.completed ? completedTodos.push(todo) : pendingTodos.push(todo)
+      );
+      setLists((prev) => ({ completed: completedTodos, todo: pendingTodos }));
+    }
+  }, [isLoading, isSuccess, todos]);
   if (isLoading) return <Spinner />;
-
-  if (isError) return <h3 className="center">Error Fetching Data ...</h3>;
 
   if (todos.length === 0) {
     return (
       <h3 className="center">
         Couldn't find any Todos <br /> Start adding Some!
       </h3>
-    );
-    
-  } else {
-    todos.forEach((todo) =>
-      todo.completed ? lists.completed.push(todo) : lists.todo.push(todo)
     );
   }
 

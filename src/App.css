@@ -1,6 +1,8 @@
 :root {
   --main-color: #282c34;
-  --secondary-color: #61dafb;
+  --secondary600: #499eb5;
+  --secondary400: #61dafb;
+  --secondary100: #9eeaff;
   --white100: #fff1;
   --white-shadow: 0 0 15px 3px #fff5;
   --secondary-shadow: 0 0 15px 3px #61dafb50;
@@ -12,19 +14,21 @@
   text-align: center;
 }
 
-ul{
-  list-style:none;
+ul {
+  list-style: none;
 }
 
-h3{
-  margin: 30px auto;
+a {
+  text-decoration: none;
 }
+
 /* App  */
 .App {
   min-height: 100vh;
   background-color: var(--main-color);
   color: #fff;
 }
+
 /* Header  */
 header {
   background-color: var(--white100);
@@ -32,13 +36,70 @@ header {
   font-weight: 600;
   text-align: center;
   padding: 20px;
-  margin-bottom: 20px;
   box-shadow: var(--white-shadow);
 }
+
+/* Error Boundary  */
+.error-boundary {
+  margin: 50px auto;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-boundary p {
+  font-size: 18px;
+  text-align: center;
+}
+
+.error-boundary span {
+  font-weight: 600;
+  color: var(--secondary100);
+}
+
+.error-boundary .error-list {
+  list-style: circle;
+  margin-left: 30px;
+}
+
+.error-boundary li {
+  margin: 15px 0;
+}
+
+.error-boundary .error-list h4 {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.error-boundary small {
+  display: block;
+  background-color: var(--white100);
+  padding: 5px 15px;
+  font-weight: 500;
+  color: var(--secondary400);
+}
+
+.error-boundary .error-list a {
+  color: var(--secondary400);
+  border-bottom: 2px solid transparent;
+  font-weight: 700;
+  transition: 0.4s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
+  -moz-transition: 0.4s ease-in-out;
+  -ms-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+}
+
+.error-boundary .error-list a:hover {
+  border-bottom-color: #61dafb;
+}
+
 /* Add Todo  */
 .todo-form {
   display: flex;
   justify-content: center;
+  margin: 50px auto;
 }
 
 .todo-form input {
@@ -52,38 +113,94 @@ header {
   -ms-transition: 0.8s ease-in-out;
   -o-transition: 0.8s ease-in-out;
   border-color: transparent transparent #fff7;
-  color: var(--secondary-color);
+  color: var(--secondary400);
 }
 
 .todo-form input:focus {
-  border-bottom-color: var(--secondary-color);
+  border-bottom-color: var(--secondary400);
   color: #fff;
   background-color: #fff3;
 }
-/* Todo List  */
+
+/* Todos   */
 .todos {
   display: flex;
   justify-content: space-evenly;
+  /* margin: 30px 50px; */
+  align-items: flex-start;
 }
 
-/* List  */
-.todo-list {
-  list-style: none;
+/* Todo List  */
+.todo-list-container {
+  margin-bottom: 20px;
+  background-color: var(--white100);
+  width: 40%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: var(--white-shadow);
+  transition: 0.4s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
+  -moz-transition: 0.4s ease-in-out;
+  -ms-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
 }
 
-.todo-list .list-title{
-  /* text-align:center; */
-  margin:20px auto;
+.todo-list-container:hover {
+  box-shadow: var(--secondary-shadow);
 }
+
+.todo-list-container .list-title {
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .todos {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .todo-list-container {
+    width: 80%;
+    margin-bottom: 50px;
+  }
+}
+
+/* Todo Item  */
+.todo-item {
+  margin-bottom: 10px;
+}
+
+.todo-item label {
+  cursor: pointer;
+  margin-left: 5px;
+  transition: 0.4s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
+  -moz-transition: 0.4s ease-in-out;
+  -ms-transition: 0.4s ease-in-out;
+  -o-transition: 0.4s ease-in-out;
+}
+
+.todo-item label:hover {
+  color: var(--secondary400);
+}
+
 /* Button  */
 .btn {
-  border-color: transparent;
-  border-width: 1px;
+  font-weight: 600;
+  background-color: transparent;
+  border-color: var(--secondary400);
+  color: var(--secondary400);
   padding: 10px 15px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
-  background-color: var(--secondary-color);
   -webkit-transition: 0.8s ease-in-out;
   -moz-transition: 0.8s ease-in-out;
   -ms-transition: 0.8s ease-in-out;
@@ -94,13 +211,13 @@ header {
   -o-border-radius: 5px;
   border-radius: 5px;
   transition: 0.8s ease-in-out;
-  position: relative;
   box-shadow: none;
 }
 
 .btn.ghost {
   background-color: transparent;
   padding: 1px;
+  border: 1px solid red;
 }
 
 .btn:not(.ghost):hover {
@@ -113,26 +230,8 @@ header {
 }
 
 .btn.ghost:hover {
-  background-color: #f003;
-  border-color: #f00;
+  /* background-color: #f003; */
   box-shadow: var(--red-shadow);
-}
-/* Todo Item  */
-.todo-item {
-  margin-bottom: 10px;
-}
-.todo-item label {
-  cursor: pointer;
-  margin-left: 5px;
-  transition: 0.4s ease-in-out;
-  -webkit-transition: 0.4s ease-in-out;
-  -moz-transition: 0.4s ease-in-out;
-  -ms-transition: 0.4s ease-in-out;
-  -o-transition: 0.4s ease-in-out;
-}
-
-.todo-item label:hover {
-  color: var(--secondary-color);
 }
 
 /* Spinner  */
@@ -155,8 +254,8 @@ header {
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 6px solid teal;
-  border-color: teal transparent teal transparent;
+  border: 6px solid var(--secondary400);
+  border-color: var(--secondary400) transparent var(--secondary400) transparent;
   -webkit-animation: spinner 1.2s linear infinite;
   animation: spinner 1.2s linear infinite;
   -webkit-border-radius: 50%;
@@ -165,6 +264,7 @@ header {
   -o-border-radius: 50%;
   border-radius: 50%;
 }
+
 @keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);

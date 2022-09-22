@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": "1663791453939",
-      "title": "test",
-      "completed": false
-    },
-    {
       "id": "1663791476716",
       "title": "Learn Redux Toolkit",
       "completed": true
@@ -23,12 +18,22 @@
     {
       "id": "1663791507667",
       "title": "Feed Pets",
-      "completed": false
+      "completed": true
     },
     {
       "id": "1663791516425",
       "title": "Learn React",
+      "completed": false
+    },
+    {
+      "id": "1663810715900",
+      "title": "test",
       "completed": true
+    },
+    {
+      "id": "1663812079704",
+      "title": "Meditate",
+      "completed": false
     }
   ]
 }
